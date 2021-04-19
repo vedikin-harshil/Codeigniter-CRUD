@@ -8,23 +8,19 @@
             $this->db->where('password',$password);
             $query = $this->db->get('user');
             
-            if($query->num_rows() > 0){
-               return true;
-            }
-            else{
-               return false;
-            }
+            if($query->num_rows() > 0){ return true; }
+            else{ return false; }
          }
 
          // to add data in database
    		public function add($data){
    			$result = $this->db->insert("user",$data);
-            if($result == 1){
-               echo "<script>alert('Record Inserted')</script>";
-            }
-            else{
-               echo "<script>alert('Record Not Inserted')</script>";
-            }
+            // if($result == 1){
+            //    echo "<script>alert('Record Inserted')</script>";
+            // }
+            // else{
+            //    echo "<script>alert('Record Not Inserted')</script>";
+            // }
    		}
 
          // to display all data from databse

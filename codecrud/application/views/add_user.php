@@ -3,12 +3,16 @@
 <head>
 	<title>Add User</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
 
 </head>
 <body>
 <div class="container">
-	<h1 class="text-center">Welcome to my site - <?php echo $this->session->userdata('username'); ?></h1>
+	<!-- <h1 class="text-center">Welcome - <?php echo $this->session->userdata('username'); ?></h1> -->
+	<h1 class="text-center">Welcome - <?php echo ucfirst($this->session->userdata('username')); ?></h1>
+	<?php echo '<a href="'.base_url().'controller_user/logout" class="btn btn-danger">Logout</a>'; ?>
 	<br><br>
+	
 
 	<form method="post" action="<?php echo base_url()?>controller_user/form_validation" enctype="multipart/form-data">
 		
@@ -80,5 +84,12 @@
 	</form>
 
 </div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+	<script type="text/javascript">
+		<?php if($this->session->flashdata('success')){ ?>
+	    	toastr.success("<?php echo $this->session->flashdata('success'); ?>");
+		<?php } ?>
+	</script>
 </body>
 </html>

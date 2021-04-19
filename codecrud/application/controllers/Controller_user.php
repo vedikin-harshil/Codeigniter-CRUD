@@ -1,9 +1,6 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-/**
- * 
- */
 class Controller_user extends CI_controller
 {
 	
@@ -35,12 +32,12 @@ class Controller_user extends CI_controller
 						'username' => $username,
 				);
 				$this->session->set_userdata($session_data);
+				$this->session->set_flashdata('success','Login Succesfull');
 				redirect(base_url(). 'controller_user/add');
 			}
 			else{
 				$this->session->set_flashdata('error','Invalid Username and Password');
 				redirect(base_url(). 'controller_user/login');
-
 			}
 		}
 		else{
@@ -52,6 +49,7 @@ class Controller_user extends CI_controller
 	public function logout()
 	{
 		$this->session->unset_userdata('username');
+		$this->session->set_flashdata('error','Logout Succesfull');
 		redirect(base_url(). 'controller_user/login');
 	}
 
@@ -65,11 +63,7 @@ class Controller_user extends CI_controller
 		// else{
 		// 	redirect(base_url(). 'controller_user/login');
 		// }
-
-
-		$data = $this->session->userdata('username');
-		echo '<a href="'.base_url().'controller_user/logout" class="btn btn-danger">Logout</a>';
-		
+		$data = $this->session->userdata('username');		
 		$this->load->view('add_user',$data);
 	}
 
@@ -94,13 +88,14 @@ class Controller_user extends CI_controller
 			//	to check for update and insert
 			if($this->input->post("update")){
 				$this->User_model->update_data($data,$this->input->post("hidden_id"));
+				$this->session->set_flashdata('success','User updated Succesfully');
 				redirect(base_url(). 'controller_user/list_all_user');
 			}
 			if($this->input->post("submit")){
 				$this->User_model->add($data);
-				redirect(base_url() . 'controller_user/list_all_user');
+				$this->session->set_flashdata('success','User added Succesfully');
+				redirect(base_url() . 'controller_user/add');
 			}
-			
 		}
 		else{
 			$this->add();
@@ -121,6 +116,7 @@ class Controller_user extends CI_controller
 		$id = $this->uri->segment(3);
 		$this->load->model("User_model");
 		$this->User_model->delete_single_user($id);
+		$this->session->set_flashdata('error','User deleted Succesfully');
 		redirect(base_url() . 'controller_user/list_all_user');
 	}
 
@@ -146,11 +142,6 @@ class Controller_user extends CI_controller
         {
 			redirect(base_url() . 'controller_user/list_all_user');
         }
-		// $key = $this->input->post('search');
-		
 	}
 }
-
-
-
 ?>
