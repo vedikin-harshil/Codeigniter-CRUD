@@ -41,6 +41,11 @@
 				<span class="text-danger"><?php echo form_error("password"); ?></span>
 			</div>
 			<div class="form-group col-lg-12">
+				<label>Choose file to Upload</label>
+				<input type="file" name="upload" value="<?php echo $row->upload; ?>"  class="form-control"/>
+				<!-- <span class="text-danger"><?php echo form_error("upload"); ?></span> -->
+			</div>
+			<div class="form-group col-lg-12">
 				<input type="hidden" name="status" class="form-control" value="1" />
 			</div>
 			<div class="form-group col-lg-12">
@@ -68,6 +73,11 @@
 			<div class="form-group col-lg-12">
 				<input type="password" name="password" placeholder="Enter Password"  class="form-control"/>
 				<span class="text-danger"><?php echo form_error("password"); ?></span>
+			</div>
+			<div class="form-group col-lg-12">
+				<label>Choose file to Upload</label>
+				<input type="file" name="upload" class="form-control"/>
+				<!-- <span class="text-danger"><?php echo form_error("upload"); ?></span> -->
 			</div>
 			<div class="form-group col-lg-12">
 				<input type="hidden" name="status" class="form-control" value="1" />

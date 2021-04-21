@@ -15,18 +15,13 @@
          // to add data in database
    		public function add($data){
    			$result = $this->db->insert("user",$data);
-            // if($result == 1){
-            //    echo "<script>alert('Record Inserted')</script>";
-            // }
-            // else{
-            //    echo "<script>alert('Record Not Inserted')</script>";
-            // }
    		}
 
          // to display all data from databse
          public function list_all_data()
          {
             $this->db->select("*");
+            $this->db->order_by("id", "asc");
             $query = $this->db->get("user");  
             return $query;
          }
