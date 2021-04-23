@@ -1,11 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Search User</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<?php include('include/header.php'); ?>
 
-</head>
-<body>
 <div class="container">
 	<h2>Search Result:</h2>
 	<table class="table table-hover table-bordered" border="1">
@@ -57,6 +51,4 @@
 <br>
 <a href="<?php echo base_url()?>controller_user/list_all_user" class="btn btn-primary">Back to Home</a>
 </div>
-
-</body>
-</html>
+<?php include('include/footer.php'); ?>

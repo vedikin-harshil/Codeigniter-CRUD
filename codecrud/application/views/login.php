@@ -14,9 +14,6 @@
 
 	<form method="post" action="<?php echo base_url()?>controller_user/login_validation">
 		
-		<?php //if($this->session->flashdata('error')): ?>
-		    <h4 style="color: red;"><?php //echo $this->session->flashdata('error'); ?></h4>
-		<?php //endif; ?>
 		<div class="form-group col-lg-12">
 			<input type="text" name="username" placeholder="Enter Username" class="form-control"/>
 			<span class="text-danger"><?php echo form_error("username"); ?></span>

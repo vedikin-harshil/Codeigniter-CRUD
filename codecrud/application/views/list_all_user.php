@@ -1,21 +1,12 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>List all User</title>
-	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+<?php include('include/header.php'); ?>
 
-</head>
-<body>
 
 <div class="container">
-	<h2 class="text-center">List all User</h2>
-
 	<form class="filter_form" id="frmListDataFilter" method="post" action="<?php echo base_url()?>controller_user/search">
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-4">
 			<input size="15" type="text" class="extra_field form-control" name="txtSearchKeyWord" id="txtSearchKeyWord" placeholder="Search Keyword" value="<?php echo set_value('txtSearchKeyWord');?>" required/>
 		</div>
-		<div class="form-group col-sm-6">
+		<div class="form-group col-sm-8">
 			<input type="submit" class="btn btn-warning" name="searchSubmit" id="searchSubmit" value="Search" />
 		</div>
 	</form>
@@ -53,17 +44,8 @@
 		</tbody>
 	</table>
 	
-	<a href="<?php echo base_url()?>controller_user/add" class="btn btn-primary">Back to Home</a>
+	<!-- <a href="<?php echo base_url()?>controller_user/add" class="btn btn-primary">Back to Home</a> -->
+	<br><br>
 </div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-	<script type="text/javascript">
-		<?php if($this->session->flashdata('success')){ ?>
-	    	toastr.success("<?php echo $this->session->flashdata('success'); ?>");
-		<?php } ?>
-		<?php if($this->session->flashdata('error')){ ?>
-	    	toastr.error("<?php echo $this->session->flashdata('error'); ?>");
-		<?php } ?>
-	</script>
-</body>
-</html>
+
+<?php include('include/footer.php'); ?>

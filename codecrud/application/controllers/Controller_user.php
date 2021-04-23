@@ -53,6 +53,11 @@ class Controller_user extends CI_controller
 		redirect(base_url(). 'controller_user/login');
 	}
 
+	//dashboard
+	public function dashboard(){
+		$this->load->view('dashboard');
+	}
+
 	// insert data in to table
 	public function add()
 	{	
@@ -63,7 +68,7 @@ class Controller_user extends CI_controller
 		// else{
 		// 	redirect(base_url(). 'controller_user/login');
 		// }
-		$data = $this->session->userdata('username');		
+		$data = $this->session->userdata('username');
 		$this->load->view('add_user',$data);
 	}
 
@@ -74,7 +79,6 @@ class Controller_user extends CI_controller
 		$this->form_validation->set_rules("username", "User Name", 'required');
 		$this->form_validation->set_rules("email", "Email", 'required');
 		$this->form_validation->set_rules("password", "Password", 'required');
-		// $this->form_validation->set_rules("upload", "Upload", 'required');
 
 		if($this->form_validation->run()){
 			//true
@@ -82,7 +86,7 @@ class Controller_user extends CI_controller
 
 			//for uploading image start
 			if(!empty($_FILES['upload']['name'])){
-				$config["upload_path"] = "./upload/";
+				$config["upload_path"] = "./upload/users";
 				$config["allowed_types"] = "jpg|png|gif|jpeg";
 				$config["file_name"] = $_FILES['upload']['name'];
 
@@ -95,13 +99,13 @@ class Controller_user extends CI_controller
 					// $upload = $uploaded_data['file_name'];
 
 					// to store folder name and file name in DB
-					$upload = "upload/".$uploaded_data['name'].$uploaded_data['file_name'];
+					$upload = "upload/users/".$uploaded_data['name'].$uploaded_data['file_name'];
 
 					//echo "File " . $uploaded_data["file_name"] . " has been uploaded.";
 				}
 				else{
 					//$upload = '';
-					$upload_error=$this->upload->display_errors();
+					$this->upload->display_errors();
 				}
 			}else{
 				$upload = '';
