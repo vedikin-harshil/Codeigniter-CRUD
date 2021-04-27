@@ -1,7 +1,12 @@
 <?php include('include/header.php'); ?>
 
 <div class="container">
-	
+	<!-- <?php 
+		echo $this->session->userdata('username');
+		echo $this->session->userdata('upload');
+		
+		?> -->
+
 	<form method="post" action="<?php echo base_url()?>controller_user/form_validation" enctype="multipart/form-data">
 		
 		<!-- check when there is user_data value for update-->
@@ -75,10 +80,10 @@
 				<input type="hidden" name="status" class="form-control" value="1" />
 			</div>
 			<div class="form-group col-lg-12">
-				<input type="submit" name="submit" value="Insert" class="btn btn-info btn-lg" />
+				<input type="submit" name="submit" value="Insert" class="btn btn-info" />
 			</div>
 			
-			<a href="<?php echo base_url('controller_user/list_all_user') ?>" class="btn btn-primary">List Users</a><br><br>
+			<a href="<?php echo base_url('controller_user/list_all_user') ?>" class="btn btn-danger">List Users</a><br><br>
 
 		<?php 
 		}

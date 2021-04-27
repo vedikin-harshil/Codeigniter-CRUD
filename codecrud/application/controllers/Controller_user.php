@@ -9,11 +9,16 @@ class Controller_user extends CI_controller
 		parent::__construct();
 	}
 
-	// login to load login page
-	public function login()
+	public function header()
 	{
-		$data['title'] = "Welcome to the Simple Login Form of Codeigniter";
-		$this->load->view("login",$data);
+		$this->load->model("User_model"); // calling user_model
+		$data['d'] = $this->User_model->header_user();
+      	$this->load->view('./include/header',$data);
+	}
+
+	// login to load login page
+	public function login() {
+		$this->load->view("login");
 	}
 
 	// login validation
@@ -26,14 +31,16 @@ class Controller_user extends CI_controller
 		if($this->form_validation->run()){
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
+			$logged_in = TRUE;
 			$this->load->model("user_model");
 			if($this->user_model->can_login($username,$password)){
 				$session_data = array(
 						'username' => $username,
+						'logged_in' => $logged_in,
 				);
 				$this->session->set_userdata($session_data);
-				$this->session->set_flashdata('success','Login Succesfull');
-				redirect(base_url(). 'controller_user/add');
+				$this->session->set_flashdata('success','Login Successfull');
+				redirect(base_url(). 'controller_user/dashboard');
 			}
 			else{
 				$this->session->set_flashdata('error','Invalid Username and Password');
@@ -55,19 +62,16 @@ class Controller_user extends CI_controller
 
 	//dashboard
 	public function dashboard(){
-		$this->load->view('dashboard');
+		if($this->session->userdata('username') && $this->session->userdata('logged_in')){
+			$this->load->view('dashboard');
+		}else{
+			$this->load->view('login');
+		}
 	}
 
 	// insert data in to table
 	public function add()
 	{	
-		// if($this->session->userdata('username') != ''){
-		// 	echo '<h2>Welcome - ' .$this->session->userdata('username'). '</h2>';
-		// 	echo '<a href="'.base_url().'controller_user/logout" class="btn btn-danger">Logout</a>';
-		// }
-		// else{
-		// 	redirect(base_url(). 'controller_user/login');
-		// }
 		$data = $this->session->userdata('username');
 		$this->load->view('add_user',$data);
 	}
@@ -100,11 +104,9 @@ class Controller_user extends CI_controller
 
 					// to store folder name and file name in DB
 					$upload = "upload/users/".$uploaded_data['name'].$uploaded_data['file_name'];
-
 					//echo "File " . $uploaded_data["file_name"] . " has been uploaded.";
 				}
 				else{
-					//$upload = '';
 					$this->upload->display_errors();
 				}
 			}else{

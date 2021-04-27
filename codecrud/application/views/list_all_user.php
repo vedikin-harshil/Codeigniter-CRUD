@@ -43,8 +43,6 @@
 			<?php } ?>
 		</tbody>
 	</table>
-	
-	<!-- <a href="<?php echo base_url()?>controller_user/add" class="btn btn-primary">Back to Home</a> -->
 	<br><br>
 </div>
 

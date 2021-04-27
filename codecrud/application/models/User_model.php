@@ -1,13 +1,19 @@
 <?php 
-   class User_model extends CI_Model {
-
+class User_model extends CI_Model 
+{
+         //header
+         public function header_user() {
+            $this->db->select("*");
+            $this->db->order_by("id", "asc");
+            $query = $this->db->get("user");  
+            return $query;
+         }
          // login 
          public function can_login($username,$password)
          {
             $this->db->where('username',$username);
             $this->db->where('password',$password);
             $this->db->where('status','1');
-
             $query = $this->db->get('user');
             
             if($query->num_rows() > 0){ return true; }

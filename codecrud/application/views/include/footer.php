@@ -4,10 +4,10 @@
 		                class="text-secondary font-weight-bold"><a href="http://vedikin.com">VedikIn Solutions </a></span></small>
 		    </div>
 		    <div class="col-md-12">
-		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3"> <i class="fab fa-github" aria-hidden="true"></i> </a>
-		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3"> <i class="fab fa-twitter" aria-hidden="true"></i> </a>
-		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3"> <i class="fab fa-instagram" aria-hidden="true"></i> </a>
-		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light mr-3 mb-3"> <i class="fab fa-linkedin-in" aria-hidden="true"></i> </a>
+		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light"> <i class="fab fa-github" aria-hidden="true"></i> </a>
+		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light"> <i class="fab fa-twitter" aria-hidden="true"></i> </a>
+		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light"> <i class="fab fa-instagram" aria-hidden="true"></i> </a>
+		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light"> <i class="fab fa-linkedin-in" aria-hidden="true"></i> </a>
 		    </div>
 		</div>
 	</main>

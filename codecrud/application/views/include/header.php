@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Codecrud</title>
-	
-	<link rel="stylesheet" href="<?php echo base_url()?>assets/css/bootstrap.min.css" />
+	<title>Welcome | Codecrud</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/toastr.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/sidebar-themes.css">
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
+    <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/logo.svg">
 
-    <link rel="shortcut icon" type="image/png" href="<?php echo base_url()?>assets/img/favicon.png" />
 </head>
 
 <body>
@@ -21,7 +27,7 @@
         <div class="sidebar-content">
             <!-- sidebar-brand  -->
             <div class="sidebar-item sidebar-brand">
-                <a href="<?php echo base_url()?>controller_user/dashboard">CodeCrud</a>
+                <img style="height: 40px;" src="<?php echo base_url()?>assets/img/logo-bg.svg" alt="User picture">&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url()?>controller_user/dashboard">CodeCrud</a>
             </div>
             <!-- sidebar-header  -->
             <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -34,11 +40,10 @@
                     <span class="user-status">
                         <i class="fa fa-circle"></i>
                             <span>Active</span>
-
                     </span>
                 </div>
             </div>
-            <div class=" sidebar-item sidebar-menu">
+            <div class="sidebar-item sidebar-menu">
                 <ul>
                     <li class="header-menu"> <span>General</span> </li>
                     <li class="sidebar-dropdown">
@@ -79,7 +84,7 @@
 
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
-        <div class="container-fluid p-5">
+        <div class="container-fluid">
             <div class="row">
                 <div class="form-group col-md-12">
                     <a id="toggle-sidebar" class="btn btn-secondary rounded-0" href="#">
