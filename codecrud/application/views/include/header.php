@@ -32,15 +32,37 @@
             <!-- sidebar-header  -->
             <div class="sidebar-item sidebar-header d-flex flex-nowrap">
                 <div class="user-pic">
-                    <img class="img-responsive img-rounded" src="<?php echo base_url()?>assets/img/user.jpg" alt="User picture">
+                    <?php foreach ($pp as $row) { ?>
+                        <?php if(!empty($row->upload)): ?>
+                            <img  style="height: 60px;" src="<?php echo base_url($row->upload); ?>" alt="user"><br><br>
+                        <?php else: ?>
+                            <img  style="height: 60px;" src="<?php echo base_url('upload/user.jpg'); ?>" alt="user"><br><br>
+                        <?php endif ?>
+                    <?php } ?>
                 </div>
                 <div class="user-info">
                     <span class="user-name"><?php echo ucfirst($this->session->userdata('username')); ?> </span>
                     <span class="user-role"></span>
                     <span class="user-status">
                         <i class="fa fa-circle"></i>
-                            <span>Active</span>
+                        <?php foreach ($pp as $row) { 
+                                if($row->status == 1) { 
+                                   echo '<span>Active</span>';
+                                }else{
+                                    redirect(base_url() . 'controller_user/logout');
+                                }
+                        } ?>
                     </span>
+                    <div class="dropdowns">
+                        <span class="dropbtn">Profile 
+                          <i class="fa fa-caret-down"></i>
+                        </span>
+                        <div class="dropdown-content">
+                          <a href="<?php echo base_url()?>controller_user/editprofile">Edit Profile</a>
+                          <a href="<?php echo base_url()?>controller_user/changepwd">Change Password</a>
+                          <a href="<?php echo base_url()?>controller_user/logout">Logout</a>
+                        </div>
+                      </div> 
                 </div>
             </div>
             <div class="sidebar-item sidebar-menu">

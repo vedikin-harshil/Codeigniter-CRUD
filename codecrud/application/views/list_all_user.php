@@ -1,5 +1,3 @@
-<?php include('include/header.php'); ?>
-
 
 <div class="container">
 	<form class="filter_form" id="frmListDataFilter" method="post" action="<?php echo base_url()?>controller_user/search">

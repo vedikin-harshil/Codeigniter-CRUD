@@ -1,6 +1,3 @@
-<?php     
-	include('include/header.php'); 
-?>
 
 <div class="grey-bg container-fluid">
   	<section id="minimal-statistics">

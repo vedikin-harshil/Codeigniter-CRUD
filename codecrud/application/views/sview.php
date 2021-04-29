@@ -1,7 +1,5 @@
-<?php include('include/header.php'); ?>
 
 <div class="container">
-	<h2>Search Result:</h2>
 	<table class="table table-hover table-bordered" border="1">
 		<tr>
 			<th>Sr No.</th>
@@ -49,6 +47,9 @@
 		</tbody>
 	</table>
 <br>
-<a href="<?php echo base_url()?>controller_user/list_all_user" class="btn btn-primary">Back to Home</a>
+<a href="<?php echo base_url()?>controller_user/list_all_user" class="btn btn-primary">Back to List Page</a>
 </div>
+<br>
+<br>
+
 <?php include('include/footer.php'); ?>

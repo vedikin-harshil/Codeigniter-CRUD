@@ -1,11 +1,6 @@
-<?php include('include/header.php'); ?>
+
 
 <div class="container">
-	<!-- <?php 
-		echo $this->session->userdata('username');
-		echo $this->session->userdata('upload');
-		
-		?> -->
 
 	<form method="post" action="<?php echo base_url()?>controller_user/form_validation" enctype="multipart/form-data">
 		
@@ -30,7 +25,7 @@
 			</div>
 			<div class="form-group col-lg-12">
 				<label>Enter Password</label>
-				<input type="text" name="password" value="<?php echo $row->password; ?>"  class="form-control"/>
+				<input type="password" name="password" value="<?php echo $row->password; ?>"  class="form-control"/>
 				<span class="text-danger"><?php echo form_error("password"); ?></span>
 			</div>
 			<div class="form-group col-lg-12">

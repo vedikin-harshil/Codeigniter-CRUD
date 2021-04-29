@@ -9,12 +9,11 @@ class Controller_user extends CI_controller
 		parent::__construct();
 	}
 
-	public function header()
-	{
-		$this->load->model("User_model"); // calling user_model
-		$data['d'] = $this->User_model->header_user();
-      	$this->load->view('./include/header',$data);
-	}
+	private function logged_in()
+    {
+        if(! $this->session->userdata('username'))
+			redirect(base_url(). 'controller_user/login');
+    }
 
 	// login to load login page
 	public function login() {
@@ -24,7 +23,7 @@ class Controller_user extends CI_controller
 	// login validation
 	public function login_validation()
 	{
-		$this->load->library('form_validation');
+		// $this->load->library('form_validation');
 		$this->form_validation->set_rules("username", "User Name", 'required');
 		$this->form_validation->set_rules("password", "Password", 'required');
 
@@ -61,17 +60,17 @@ class Controller_user extends CI_controller
 	}
 
 	//dashboard
-	public function dashboard(){
-		if($this->session->userdata('username') && $this->session->userdata('logged_in')){
-			$this->load->view('dashboard');
-		}else{
-			$this->load->view('login');
-		}
+	public function dashboard()
+	{
+		$this->logged_in();
+		$this->headerimg();
+		$this->load->view('dashboard');
 	}
 
 	// insert data in to table
 	public function add()
 	{	
+		$this->headerimg();
 		$data = $this->session->userdata('username');
 		$this->load->view('add_user',$data);
 	}
@@ -79,7 +78,7 @@ class Controller_user extends CI_controller
 	// when inserting data in to table we check to validation
 	public function form_validation()
 	{
-   		$this->load->library('form_validation');
+   		// $this->load->library('form_validation');
 		$this->form_validation->set_rules("username", "User Name", 'required');
 		$this->form_validation->set_rules("email", "Email", 'required');
 		$this->form_validation->set_rules("password", "Password", 'required');
@@ -134,6 +133,11 @@ class Controller_user extends CI_controller
 				$this->session->set_flashdata('success','User added Succesfully');
 				redirect(base_url() . 'controller_user/add');
 			}
+			if($this->input->post("updatepro")){
+				$this->User_model->update_data($data,$this->input->post("hidden_id"));
+				$this->session->set_flashdata('success','User Profile Updated Succesfully');
+				redirect(base_url() . 'controller_user/editprofile');
+			}
 		}
 		else{
 			$this->add();
@@ -143,6 +147,8 @@ class Controller_user extends CI_controller
 	// to display all user
 	public function list_all_user()
 	{
+		$this->logged_in();
+		$this->headerimg();
 		$this->load->model("User_model"); // calling user_model
 		$data['h']=$this->User_model->list_all_data();  
         $this->load->view("list_all_user", $data);
@@ -170,6 +176,8 @@ class Controller_user extends CI_controller
 	// search 
 	public function search()
 	{
+		$this->headerimg();
+
 		if(isset($_POST['txtSearchKeyWord']) && $_POST['txtSearchKeyWord'] != ""){
 			$keyword=$_POST['txtSearchKeyWord'];
 			$this->load->model("User_model");
@@ -180,6 +188,71 @@ class Controller_user extends CI_controller
         {
 			redirect(base_url() . 'controller_user/list_all_user');
         }
+	}
+
+	// to change pwd for login user
+	public function changepwd()
+	{	
+		$this->logged_in();
+		$this->headerimg();
+
+		// $this->load->library('form_validation');
+		$this->form_validation->set_rules("oldpassword", "Old Password", 'required');
+		$this->form_validation->set_rules("newpassword", "New Password", 'required');
+		$this->form_validation->set_rules("repnewpassword", "Repeat New Password", 'required|matches[newpassword]');
+
+		if($this->form_validation->run()){
+			$cur_pass = $this->input->post("oldpassword");
+			$new_pass = $this->input->post("newpassword");
+			$rep_pass = $this->input->post("repnewpassword");
+			$user_id = $this->session->userdata('userlogged_in');
+			$this->load->model("User_model");
+			$passwd = $this->User_model->getcurrpwd($user_id);
+			if($passwd->password == $cur_pass){ // current pwd not match
+				if($new_pass == $rep_pass){ // new pwd & confirm pwd not match
+					if($this->User_model->updatepwd($new_pass,$user_id)){
+						$this->session->set_flashdata('success','Password update Successfully');
+						redirect(base_url() . 'controller_user/changepwd');
+					}
+					else{
+						$this->session->set_flashdata('error','Failed to update password');
+						redirect(base_url() . 'controller_user/changepwd');
+					}
+				}
+				else{
+					$this->session->set_flashdata('error','New password & Confirm password not match');
+					redirect(base_url() . 'controller_user/changepwd');
+				}
+			}
+			else{
+				$this->session->set_flashdata('error','current password not match');
+				redirect(base_url() . 'controller_user/changepwd');
+			}
+		}
+		else{
+			$this->load->view("changepwd");
+		}
+	}
+
+	//to update profile for login user
+	public function editprofile()
+	{
+		$this->logged_in();
+		$this->headerimg();
+		// $this->load->library('table');
+		$id = $this->session->userdata('userlogged_in');
+		$this->load->model("User_model"); // calling user_model
+		$data['pp'] = $this->User_model->edit_profile($id);  
+		$this->load->view("editprofile",$data);	
+	}
+
+	//to update profile for login user
+	public function headerimg()
+	{
+		$id = $this->session->userdata('userlogged_in');
+		$this->load->model("User_model"); // calling user_model
+		$data['pp'] = $this->User_model->header_image($id); 
+		$this->load->view("include/header",$data);	
 	}
 }
 ?>
