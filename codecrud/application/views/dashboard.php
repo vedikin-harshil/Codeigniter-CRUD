@@ -5,7 +5,7 @@
 		    <div class="col-xl-3 col-sm-6 col-12"> 
 		        <div class="card card-blog">
 		                <div class="card-image">
-							<img src="<?php echo base_url()?>assets/img/linth3.svg" alt="Image placeholder" class="card-img-top">
+							<img src="<?php echo base_url()?>assets/img/login.jpg" alt="Image placeholder" class="card-img-top">
 		                </div>
 		                <div class="card-body media-body text-right">
 		                  	<i class="icon-user primary font-large-2 float-left"></i>
@@ -18,7 +18,7 @@
 	      	<div class="col-xl-3 col-sm-6 col-12"> 
 		        <div class="card card-blog">
 	                <div class="card-image">
-						<img src="<?php echo base_url()?>assets/img/linth3.svg" alt="Image placeholder" class="card-img-top">
+						<img src="<?php echo base_url()?>assets/img/login.jpg" alt="Image placeholder" class="card-img-top">
 	                </div>
 	                <div class="card-body media-body text-right">
 	                  	<i class="icon-user primary font-large-2 float-left"></i>

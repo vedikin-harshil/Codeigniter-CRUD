@@ -94,6 +94,9 @@ class Controller_user extends CI_controller
 				$config["upload_path"] = "./upload/users";
 				$config["allowed_types"] = "jpg|png|gif|jpeg";
 				$config["file_name"] = $_FILES['upload']['name'];
+				$config["overwrite"] = TRUE;
+				$config["remove_spaces"] = TRUE;
+				$config["max_size"] = 0;
 
 				$this->load->library("upload",$config);
 				$this->upload->initialize($config);

@@ -504,7 +504,7 @@ body {
     justify-content: center;
     align-items: center;
 }
-.row.footer a{color: #fff;}
+.row.footer a{color: #172b4d;}
 
 /* css for search field in list all user*/
 form#frmListDataFilter {
@@ -523,7 +523,7 @@ form#frmListDataFilter {
   margin: 0;
 }
 
-.dropdown-content {
+.dropdowns .dropdown-content {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
@@ -533,13 +533,14 @@ form#frmListDataFilter {
   padding: 8px 0px;
 }
 
-.dropdown-content a {
+.dropdowns .dropdown-content a {
   float: none;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
   text-align: left;
+  color: #000;
 }
 
 .dropdown-content a:hover {
@@ -694,5 +695,5 @@ main .toggles .row{
     cursor: pointer;
 }
 .default-theme.sidebar-bg .sidebar-wrapper a:not(.dropdown-item), .default-theme.sidebar-bg .sidebar-wrapper .sidebar-header, .default-theme.sidebar-bg .sidebar-wrapper .sidebar-search input, .default-theme.sidebar-bg .sidebar-wrapper .sidebar-search i{
-  color: #fff!important;
+  color: #fff;
 }

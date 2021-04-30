@@ -41,6 +41,7 @@
 					</td>
 					<td class="avatar avatar-sm">
 					<?php if(!empty($row->upload)): ?>
+						<?php echo $row->upload; ?>
 						<img class= "img-fluid rounded-circle shadow-lg" src="<?php echo base_url($row->upload); ?>" alt="user">
 					<?php else: ?>
 						<img style="width: 150px;height: 150px;" src="<?php echo base_url('upload/user.jpg'); ?>" alt="user">
