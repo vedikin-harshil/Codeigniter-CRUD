@@ -85,7 +85,7 @@
 
 .sidebar-bg .sidebar-wrapper {
   background-size: cover;
-  background-position: center;
+  background-position: right;
   background-repeat: no-repeat; }
   .sidebar-bg .sidebar-wrapper:before {
     content: '';
@@ -443,7 +443,7 @@ body {
 
 /*----------sidebar background images --------------*/
 .sidebar-bg.bg1 .sidebar-wrapper {
-  background-image: url(../img/bg1.jpg); }
+  background-image: url(../img/login.jpg); }
 
 .sidebar-bg.bg2 .sidebar-wrapper {
   background-image: url(../img/bg2.jpg); }
@@ -494,13 +494,17 @@ body {
 
 /*custom css for footer*/
 .row.footer {
-    background-color: rgb(0 0 0 / 85%);
+    background-image:url(../img/login.jpg);
+    background-position: right;
+    background-size: cover;
+    background-repeat: no-repeat;
     color: #fff;
     padding: 20px 0 20px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.row.footer a{color: #fff;}
 
 /* css for search field in list all user*/
 form#frmListDataFilter {
@@ -523,9 +527,10 @@ form#frmListDataFilter {
   display: none;
   position: absolute;
   background-color: #f9f9f9;
-  min-width: 160px;
+  min-width: 170px;
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   z-index: 1;
+  padding: 8px 0px;
 }
 
 .dropdown-content a {
@@ -547,4 +552,147 @@ form#frmListDataFilter {
 
 .dropdowns .dropdown-content a {
     color: #000 !important;
+}
+
+.dropdowns .dropdown-content a:hover {
+    transform: scale(1.1);
+    border-radius: .3rem;
+    box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+    transition: all .4s ease;
+    background: #fff;
+}
+
+.list-all-user .user-active i{
+  font-size: 8px;
+  margin-right: 4px;
+  color: #5cb85c;
+  vertical-align: middle;
+}
+.list-all-user .user-block i{
+  font-size: 8px;
+  margin-right: 4px;
+  color: #fb6340;
+  vertical-align: middle;
+}
+.avatar-sm img {
+    width: 100px;
+    height: 100px;
+}
+
+/*dashboard card with design*/
+#minimal-statistics .card{
+  margin-bottom: 30px;
+    box-shadow: 0 15px 35px rgb(50 50 93 / 10%), 0 5px 15px rgb(0 0 0 / 7%);
+    border: 0;
+}
+.bg-default {
+    /*background-color: #172b4d!important;*/
+    background-color: #1d1d1d!important;
+}
+.card-body {
+    flex: 1 1 auto;
+    padding: 1.5rem;
+}
+.card[data-background=pattern] .pattern {
+    position: absolute;
+    opacity: .1;
+    bottom: 10%;
+}
+.pattern {
+    width: 100%;
+}
+
+main .toggles .row{
+  margin-top: -13px;
+}
+
+/*login page design*/
+
+.container-login100 {
+    width: 100%;
+    min-height: 100vh;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    z-index: 1;
+}
+
+.container-login100  .wrap-login100 {
+    width: 390px;
+    background:royalblue;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 20px 0 rgb(0 0 0 / 10%);
+    -moz-box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+    -webkit-box-shadow: 0 3px 20px 0 rgb(0 0 0 / 10%);
+    -o-box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+    -ms-box-shadow: 0 3px 20px 0 rgba(0,0,0,.1);
+}
+.container-login100 .wrap-login100 .login100-form {
+    width: 100%;
+}
+.container-login100 .wrap-login100 .wrap-input100 {
+    position: relative;
+}
+.container-login100 .wrap-login100 .container-login100-form-btn {
+    width: 100%;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.container-login100 .wrap-login100 .container-login100-form-btn  .login100-form-btn {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 20px;
+    min-width: 160px;
+    height: 50px;
+    background-color: #bd59d4;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #fff;
+    line-height: 1.2;
+    text-transform: uppercase;
+    -webkit-transition: all .4s;
+    -o-transition: all .4s;
+    -moz-transition: all .4s;
+    transition: all .4s;
+    box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
+    -moz-box-shadow: 0 10px 30px 0 rgba(189,89,212,.5);
+    -webkit-box-shadow: 0 10px 30px 0 rgb(189 89 212 / 50%);
+    -o-box-shadow: 0 10px 30px 0 rgba(189,89,212,.5);
+    -ms-box-shadow: 0 10px 30px 0 rgba(189,89,212,.5);
+    outline: none!important;
+    border: none;
+}
+.container-login100 .wrap-login100 .container-login100-form-btn .login100-form-btn:hover{
+    background-color: #4b2354;
+    box-shadow: 0 10px 30px 0 rgb(189 89 212 / 80%);
+    -moz-box-shadow: 0 10px 30px 0 rgba(189,89,212,.8);
+    -webkit-box-shadow: 0 10px 30px 0 rgb(189 89 212 / 80%);
+    -o-box-shadow: 0 10px 30px 0 rgba(189,89,212,.8);
+    -ms-box-shadow: 0 10px 30px 0 rgba(189,89,212,.8);
+    cursor: pointer;
+}
+.default-theme.sidebar-bg .sidebar-wrapper a:not(.dropdown-item), .default-theme.sidebar-bg .sidebar-wrapper .sidebar-header, .default-theme.sidebar-bg .sidebar-wrapper .sidebar-search input, .default-theme.sidebar-bg .sidebar-wrapper .sidebar-search i{
+  color: #fff!important;
 }

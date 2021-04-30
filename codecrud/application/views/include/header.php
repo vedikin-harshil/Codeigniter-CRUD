@@ -6,18 +6,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Responsive sidebar template with sliding effect and dropdown menu based on bootstrap 3">
+    <!--===============================================================================================-->
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
         integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap-extended.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/fonts/simple-line-icons/style.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/colors.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="https://pixinvent.com/stack-responsive-bootstrap-4-admin-template/app-assets/css/bootstrap.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" href="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/toastr.min.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/sidebar-themes.css">
+    <!--===============================================================================================-->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
+    <!--===============================================================================================-->
     <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/logo.svg">
-
+    <!--===============================================================================================-->
 </head>
 
 <body>
@@ -106,15 +116,15 @@
 
     <main class="page-content pt-2">
         <div id="overlay" class="overlay"></div>
-        <div class="container-fluid">
+        <div class="container-fluid toggles">
             <div class="row">
                 <div class="form-group col-md-12">
                     <a id="toggle-sidebar" class="btn btn-secondary rounded-0" href="#">
-                        <span>Toggle Sidebar</span>
+                        <span><i class="fa fa-bars"></i></span>
                     </a>
-                    <a id="pin-sidebar" class="btn btn-outline-secondary rounded-0" href="#">
+                    <!-- <a id="pin-sidebar" class="btn btn-outline-secondary rounded-0" href="#">
                         <span>Pin Sidebar</span>
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>

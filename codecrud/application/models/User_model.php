@@ -17,7 +17,6 @@ class User_model extends CI_Model
             }else{
               return false;
             }
-            
             // if($query->num_rows() > 0){ return true; }
             // else{ return false; }
          }

@@ -31,9 +31,11 @@ class Controller_user extends CI_controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$logged_in = TRUE;
+			// $u_id = $this->session->userdata('userlogged_in');
 			$this->load->model("user_model");
 			if($this->user_model->can_login($username,$password)){
 				$session_data = array(
+						// 'id' => $u_id,
 						'username' => $username,
 						'logged_in' => $logged_in,
 				);

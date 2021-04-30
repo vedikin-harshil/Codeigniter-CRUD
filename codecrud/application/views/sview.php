@@ -11,7 +11,7 @@
 			<th>Delete</th>
 			<th>Edit</th>
 		</tr>
-		<tbody>
+		<tbody class="list-all-user">
 			<?php  
 			if(count($get_data) > 0)
 			{
@@ -22,13 +22,24 @@
 						<td><?php echo $row->username ?></td>
 						<td><?php echo $row->email ?></td>
 						<td><?php echo $row->password ?></td>
-						<td><?php echo $row->status ?></td>
 						<td>
-						<?php if(!empty($row->upload)): ?>
-							<img style="width: 200px;height: 200px;" src="<?php echo base_url($row->upload); ?>" alt="user">
-						<?php else: ?>
-							<img style="width: 150px;height: 150px;" src="<?php echo base_url('upload/user.jpg'); ?>" alt="user">
-						<?php endif ?>
+						<?php 
+							if($row->status == 1) { 
+                               echo '<span class="user-active"><i class="fa fa-circle"></i><span>Active</span></span>';
+                            }elseif($row->status == 0){
+                               echo '<span class="user-block"><i class="fa fa-circle"></i><span>Block</span></span>';
+
+                            }else{
+                                redirect(base_url() . 'controller_user/logout');
+                            }
+                        ?>
+					</td>
+						<td class="avatar avatar-sm">
+							<?php if(!empty($row->upload)): ?>
+								<img class= "img-fluid rounded-circle shadow-lg" src="<?php echo base_url($row->upload); ?>" alt="user">
+							<?php else: ?>
+								<img style="width: 150px;height: 150px;" src="<?php echo base_url('upload/user.jpg'); ?>" alt="user">
+							<?php endif ?>
 						</td>
 						<td><a href="<?php echo base_url('controller_user/delete_user/'.$row->id) ?>" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</a></td>
 						<td><a href="<?php echo base_url('controller_user/edit_user/'.$row->id) ?>" class="btn btn-primary">Update</a></td>

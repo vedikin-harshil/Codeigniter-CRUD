@@ -14,7 +14,9 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!--===============================================================================================-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+<!--===============================================================================================-->
 <script type="text/javascript">
 	<?php if($this->session->flashdata('success')){ ?>
     	toastr.success("<?php echo $this->session->flashdata('success'); ?>");
@@ -23,9 +25,13 @@
     	toastr.error("<?php echo $this->session->flashdata('error'); ?>");
 	<?php } ?>
 </script>
+<!--===============================================================================================-->
 <script src="//malihu.github.io/custom-scrollbar/jquery.mCustomScrollbar.concat.min.js"></script>
+<!--===============================================================================================-->
 <script src="<?php echo base_url()?>assets/js/bootstrap.min.js"></script>
+<!--===============================================================================================-->
 <script src="<?php echo base_url()?>assets/js/sidebar-main.js"></script>
+<!--===============================================================================================-->
 
 </body>
 </html>
