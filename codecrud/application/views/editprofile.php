@@ -2,7 +2,7 @@
 <br>
 <br>
 <div class="container">
-	
+<?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 	<?php 
 		foreach ($pp as $row) { ?>
 
@@ -19,7 +19,7 @@
 				</div>
 				<div class="form-group col-lg-12">
 					<label>Enter Password</label>
-					<input type="password" name="password" value="<?php echo $row->password; ?>"  class="form-control"/>
+					<input type="password" name="password" value="<?php echo $row->password; ?>"  class="form-control" readonly/>
 					<span class="text-danger"><?php echo form_error("password"); ?></span>
 				</div>
 				<div class="form-group col-lg-12">

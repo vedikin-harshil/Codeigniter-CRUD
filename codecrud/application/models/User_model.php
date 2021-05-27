@@ -40,6 +40,12 @@ class User_model extends CI_Model
          {
             return $this->db->delete('user',array('id'=>$id));
          }
+         // when deleting user the user uploaded file will also deleted from the stored
+         public function getFiles($id)
+          {
+            $user = $this->db->select('upload')->from('user')->where('id',$id)->get(); 
+            return $user->result();
+          }
 
          // to edit single user data
          public function edit_single_data($id)

@@ -1,7 +1,7 @@
 		<div class="row footer">
 		    <div class="form-group col-md-12">
 		        <small>Made with <i class="fa fa-heart text-danger" aria-hidden="true"></i> by <span
-		                class="text-secondary font-weight-bold"><a href="http://vedikin.com">VedikIn Solutions </a></span></small>
+		                class="text-secondary font-weight-bold"><a href="http://vedikin.com" target="_blank">VedikIn Solutions </a></span></small>
 		    </div>
 		    <div class="col-md-12">
 		        <a href="#" target="_blank" class="btn btn-sm bg-secondary shadow-sm rounded-0 text-light"> <i class="fab fa-github" aria-hidden="true"></i> </a>

@@ -52,3 +52,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'controller_user/login';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+$route['userDelete']['post']='controller_user/deleteAll';

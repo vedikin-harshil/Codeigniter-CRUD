@@ -3,7 +3,7 @@
 <div class="container">
 
 	<form method="post" action="<?php echo base_url()?>controller_user/form_validation" enctype="multipart/form-data">
-		
+	<?php echo validation_errors('<div class="alert alert-danger" role="alert">', '</div>'); ?>
 		<!-- check when there is user_data value for update-->
 		<?php  
            if(isset($user_data))  
@@ -25,7 +25,7 @@
 			</div>
 			<div class="form-group col-lg-12">
 				<label>Enter Password</label>
-				<input type="password" name="password" value="<?php echo $row->password; ?>"  class="form-control"/>
+				<input type="password" name="password" value="<?php echo $row->password; ?>"  class="form-control" />
 				<span class="text-danger"><?php echo form_error("password"); ?></span>
 			</div>
 			<div class="form-group col-lg-12">
@@ -35,7 +35,7 @@
 				<?php else: ?>
 					<img style="width: 150px;height: 150px;" src="<?php echo base_url('upload/user.jpg'); ?>" alt="user"><br><br>
 				<?php endif ?>
-				<label>Choose file to Upload</label>
+				<label>Choose Profile Image to Upload</label>
 				<input type="file" name="upload" value="<?php echo $row->upload; ?>"  class="form-control"/>
 			</div>
 			<div class="form-group col-lg-12">
@@ -68,7 +68,7 @@
 				<span class="text-danger"><?php echo form_error("password"); ?></span>
 			</div>
 			<div class="form-group col-lg-12">
-				<label>Choose file to Upload</label>
+				<label>Choose Profile Image to Upload</label>
 				<input type="file" name="upload" class="form-control"/>
 			</div>
 			<div class="form-group col-lg-12">
@@ -77,9 +77,6 @@
 			<div class="form-group col-lg-12">
 				<input type="submit" name="submit" value="Insert" class="btn btn-info" />
 			</div>
-			
-			<a href="<?php echo base_url('controller_user/list_all_user') ?>" class="btn btn-danger">List Users</a><br><br>
-
 		<?php 
 		}
 		?>

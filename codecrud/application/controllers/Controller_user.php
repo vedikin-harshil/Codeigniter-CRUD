@@ -11,7 +11,7 @@ class Controller_user extends CI_controller
 
 	private function logged_in()
     {
-        if(! $this->session->userdata('username'))
+        if(!$this->session->userdata('username'))
 			redirect(base_url(). 'controller_user/login');
     }
 
@@ -66,7 +66,16 @@ class Controller_user extends CI_controller
 	{
 		$this->logged_in();
 		$this->headerimg();
-		$this->load->view('dashboard');
+	    $i = 0; 
+	    $dir = 'upload/users';
+	    if ($handle = opendir($dir)) {
+	        while (($file = readdir($handle)) !== false){
+	            if (!in_array($file, array('.', '..')) && !is_dir($dir.$file)) 
+	                $i++;
+	        }
+	    }
+    	$data['totaldata']= $i;
+		$this->load->view('dashboard',$data);
 	}
 
 	// insert data in to table
@@ -114,7 +123,7 @@ class Controller_user extends CI_controller
 					$this->upload->display_errors();
 				}
 			}else{
-				$upload = '';
+				$upload = 'upload/user.jpg';
 			}
 			//for uploading image end
 
@@ -164,14 +173,29 @@ class Controller_user extends CI_controller
 	{
 		$id = $this->uri->segment(3);
 		$this->load->model("User_model");
-		$this->User_model->delete_single_user($id);
-		$this->session->set_flashdata('error','User deleted Succesfully');
-		redirect(base_url() . 'controller_user/list_all_user');
+		$files = $this->User_model->getFiles($id);
+		foreach($files as $file){
+            if ($file != null && $file->upload != "") {
+                if (file_exists($file->upload)) {
+                    chown($file->upload, 666);
+                    unlink($file->upload);
+                }
+            } 
+        }
+        $result = $this->User_model->delete_single_user($id);
+        if ($result) {
+            	$this->session->set_flashdata('error','User deleted Succesfully');
+				redirect(base_url() . 'controller_user/list_all_user');
+        } else {
+				redirect(base_url() . 'controller_user/list_all_user');
+        }
+		
 	}
 
 	// to edite single user data
 	public function edit_user()
 	{
+		$this->headerimg();
 		$user_id = $this->uri->segment(3);
 		$this->load->model("User_model");
 		$data['user_data'] = $this->User_model->edit_single_data($user_id);  
@@ -259,5 +283,16 @@ class Controller_user extends CI_controller
 		$data['pp'] = $this->User_model->header_image($id); 
 		$this->load->view("include/header",$data);	
 	}
+
+	//to delete multiple user
+	public function deleteAll()
+    {
+        $ids = $this->input->post('id');
+        $this->db->where_in('id', explode(",", $ids));
+        $this->db->delete('user');
+        $this->session->set_flashdata('success_message', 'Selected Entitys has been Deleted Successfully');
+        redirect(base_url() . 'controller_user/list_all_user');
+        //echo json_encode(['success'=>"Data Deleted successfully."]);
+    }
 }
 ?>
