@@ -1,4 +1,8 @@
-
+<style>
+span.user_status {
+    cursor: pointer;
+}
+</style>
 <div class="container">
 	<form class="filter_form" id="frmListDataFilter" method="post" action="<?php echo base_url()?>controller_user/search">
 		<div class="form-group col-sm-4">
@@ -8,7 +12,7 @@
 			<input type="submit" class="btn btn-warning" name="searchSubmit" id="searchSubmit" value="Search" />
 		</div>
 	</form>
-	<button style="margin-bottom: 10px" class="btn btn-primary delete_all" data-url="<?php echo base_url()?>userDelete"><i class="fa fa-bin">Delete</i></button>
+	<button style="margin-bottom: 10px" class="btn btn-primary delete_all" data-url="<?php echo base_url()?>userDelete">Delete</button>
 	<table class="table table-hover table-bordered" border="1">
 		<tr>
 			<th width="50px"><input type="checkbox" id="master"></th>
@@ -34,9 +38,9 @@
 					<td>
 						<?php 
 							if($row->status == 1) { 
-                               echo '<span class="user-active"><i class="fa fa-circle"></i><span>Active</span></span>';
+                               echo '<span class="user-active user_status" uid="'.$row->id.'"  ustatus="'.$row->status.'"><i class="fa fa-circle"></i><span>Active</span></span>';
                             }elseif($row->status == 0){
-                               echo '<span class="user-block"><i class="fa fa-circle"></i><span>Inactive</span></span>';
+                               echo '<span class="user-block user_status" uid="'.$row->id.'"  ustatus="'.$row->status.'"><i class="fa fa-circle"></i><span>Inactive</span></span>';
                             }else{
                                 redirect(base_url() . 'controller_user/logout');
                             }
@@ -57,6 +61,23 @@
 	</table>
 	<br><br>
 </div>
+<div class="modal modal-danger fade" id="modal_popup">
+    <div class="modal-dialog modal-sm">
+    	<form action="<?php echo base_url(); ?>controller_user/user_status_changed" method="post"> 
+	     	 <div class="modal-content">
+		        <div class="modal-header" style="height: 150px;">
+		          	<h4 style="margin-top: 50px;text-align: center;">Are you sure, do you want to change user status?</h4>
+					<input type="hidden" name="id" id="user_id" value="">
+					<input type="hidden" name="status" id="user_status" value="">
+		        </div>
+		        <div class="modal-footer">
+		            <button type="button" class="btn btn-danger pull-left" data-dismiss="modal">No</button>
+		            <button type="submit" name="submit" class="btn btn-success">Yes</button>
+		        </div>
+	        </div>
+        </form>
+    </div>
+ </div>
 
 <?php include('include/footer.php'); ?>
 <script type="text/javascript">
@@ -97,7 +118,7 @@
                           $(".sub_chk:checked").each(function() {  
                               $(this).parents("tr").remove();
                           });
-                          alert("Item Deleted successfully.");
+                          alert("Selected Users Deleted successfully.");
                         },
                         error: function (data) {
                             alert(data.responseText);
@@ -111,4 +132,17 @@
             }  
         });
     });
+</script>
+<script type="text/javascript">
+	$(document).on('click','.user_status',function(){
+
+		var id = $(this).attr('uid'); //get attribute value in variable
+		var status = $(this).attr('ustatus'); //get attribute value in variable
+
+		$('#user_id').val(id); //pass attribute value in ID
+		$('#user_status').val(status);  //pass attribute value in ID
+
+		$('#modal_popup').modal({backdrop: 'static', keyboard: true, show: true}); //show modal popup
+
+	});
 </script>

@@ -18,14 +18,14 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
     <!--===============================================================================================-->
-	<link rel="shortcut icon" href="<?php echo base_url()?>assets/img/favicon.ico">
+	<link rel="shortcut icon" href="<?php echo base_url()?>assets/img/Ferrari.svg">
 	<!--===============================================================================================-->
 </head>
 <body>
 
 <div class="container-login100" style="background-image: url('<?php echo base_url()?>assets/img/login.jpg');background-position: center; background-repeat: no-repeat; background-size: cover;">
 	<div class="wrap-login100">
-		<h1 class="text-center"><img style="width: 200px;height: auto;" src="<?php echo base_url()?>assets/img/logo-bg.svg"></h1>
+		<h1 class="text-center"><img style="width: 200px;height: auto;" src="<?php echo base_url()?>assets/img/Ferrari.svg"></h1>
 
 		<form clas="login100-form" method="post" action="<?php echo base_url()?>controller_user/login_validation">
 			

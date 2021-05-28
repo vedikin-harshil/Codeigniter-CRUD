@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Welcome | Codecrud</title>
+	<title>Welcome | Ferrari</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -26,7 +26,7 @@
     <!--===============================================================================================-->
     <link rel="stylesheet" href="<?php echo base_url()?>assets/css/main.css">
     <!--===============================================================================================-->
-    <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/logo.svg">
+    <link rel="shortcut icon" href="<?php echo base_url()?>assets/img/Ferrari.svg">
     <!--===============================================================================================-->
 </head>
 
@@ -37,7 +37,7 @@
         <div class="sidebar-content">
             <!-- sidebar-brand  -->
             <div class="sidebar-item sidebar-brand">
-                <img style="height: 40px;" src="<?php echo base_url()?>assets/img/logo-bg.svg" alt="User picture">&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url()?>controller_user/dashboard">CodeCrud</a>
+                <img style="height: 40px;" src="<?php echo base_url()?>assets/img/Ferrari.svg" alt="User picture">&nbsp;&nbsp;&nbsp;<a href="<?php echo base_url()?>controller_user/dashboard">Ferrari</a>
             </div>
             <!-- sidebar-header  -->
             <div class="sidebar-item sidebar-header d-flex flex-nowrap">
@@ -70,6 +70,7 @@
                         <div class="dropdown-content">
                           <a href="<?php echo base_url()?>controller_user/editprofile">Edit Profile</a>
                           <a href="<?php echo base_url()?>controller_user/changepwd">Change Password</a>
+                          <a href="<?php echo base_url()?>controller_frontend/index" target="_blank" >Front End</a>
                           <a href="<?php echo base_url()?>controller_user/logout">Logout</a>
                         </div>
                       </div> 
@@ -98,6 +99,12 @@
                                 <li><a href="<?php echo base_url()?>controller_user/list_all_user">List all Users</a></li>
                             </ul>
                         </div>
+                    </li>
+                    <li class="sidebar-dropdown">
+                        <a href="<?php echo base_url()?>controller_frontend/index" target="_blank">
+                            <i class="fa fa-home"></i>
+                            <span class="menu-text">Front End</span>
+                        </a>
                     </li>
                 </ul>
             </div>

@@ -31,11 +31,11 @@ class Controller_user extends CI_controller
 			$username = $this->input->post('username');
 			$password = $this->input->post('password');
 			$logged_in = TRUE;
-			// $u_id = $this->session->userdata('userlogged_in');
+			$u_id = $this->session->userdata('userlogged_in');
 			$this->load->model("user_model");
 			if($this->user_model->can_login($username,$password)){
 				$session_data = array(
-						// 'id' => $u_id,
+						'id' => $u_id,
 						'username' => $username,
 						'logged_in' => $logged_in,
 				);
@@ -287,12 +287,44 @@ class Controller_user extends CI_controller
 	//to delete multiple user
 	public function deleteAll()
     {
-        $ids = $this->input->post('id');
+		//to delete record from DB
+        $ids = $this->input->post('ids');
         $this->db->where_in('id', explode(",", $ids));
         $this->db->delete('user');
-        $this->session->set_flashdata('success_message', 'Selected Entitys has been Deleted Successfully');
         redirect(base_url() . 'controller_user/list_all_user');
         //echo json_encode(['success'=>"Data Deleted successfully."]);
+
+		//to update status from active to inactive
+		// $ids = $this->input->post('ids');
+		// $this->db->where_in('id', explode(",", $ids));
+        // $this->db->set('status','0');
+		// $this->db->update('user');
+        // redirect(base_url() . 'controller_user/list_all_user');
     }
+
+	//to update user status
+	public function user_status_changed()
+	{
+		//get hidden values in variables
+		$id = $this->input->post('id');
+		$status = $this->input->post('status');
+
+		//check condition
+		if($status == '1'){
+			$user_status = '0';
+		}
+		else{
+			$user_status = '1';
+		}
+
+		$data = array('status' => $user_status );
+
+		$this->db->where('id',$id);
+		$this->db->update('user', $data); //Update status here
+
+		//Create success measage
+		$this->session->set_flashdata('success',"User status has been changed successfully.");
+		return redirect(base_url() . 'controller_user/list_all_user');
+	}
 }
 ?>
